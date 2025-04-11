@@ -4,6 +4,7 @@ import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @DisplayName("Collection Test Suite")
@@ -35,14 +36,23 @@ public class CollectionTestSuite {
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
+
+        //Given
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(24);
         list.add(301);
         list.add(14);
+
+        List<Integer> expected = new ArrayList<>();
+        expected.add(24);
+        expected.add(14);
+
+        //When
         List<Integer> result = OddNumbersExterminator.exterminate(list);
-        for(int number:result){
-            Assertions.assertTrue(number % 2 == 0);
-        }
+
+        //Then
+        Assertions.assertEquals(expected, result);
+
     }
 }

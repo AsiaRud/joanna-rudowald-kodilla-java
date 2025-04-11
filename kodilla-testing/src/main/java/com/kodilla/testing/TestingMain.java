@@ -11,13 +11,13 @@ public class TestingMain {
         int addResult = calculator.add(calculator.getA(), calculator.getB());
         int subResult = calculator.subtract(calculator.getA(), calculator.getB());
 
-        if (calculator.getA()+calculator.getB() == addResult) {
+        if (addResult == 17) {
             System.out.println("Calculator adding test OK");
         } else {
             System.out.println("Calculator adding test FAIL");
         }
 
-        if (calculator.getA()-calculator.getB() == subResult) {
+        if (subResult == 3) {
             System.out.println("Calculator subtracting test OK");
         } else {
             System.out.println("Calculator subtracting test FAIL");
