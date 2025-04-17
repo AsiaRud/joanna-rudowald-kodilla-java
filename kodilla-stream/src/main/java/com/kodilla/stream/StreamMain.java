@@ -1,22 +1,21 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import java.util.stream.Collectors;
 
 public class StreamMain {
 
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        poemBeautifier.beautify("Ala ma kota", poem -> poem.toUpperCase());
-        poemBeautifier.beautify("Ala ma kota", poem -> "ABC " + poem + " ABC");
-        poemBeautifier.beautify("Ala ma kota", poem -> poem.replace('l', 'd'));
-        poemBeautifier.beautify("Ala ma kota", poem -> poem.replaceAll("Ala ma kota", "Kazik ma psa"));
+        BookDirectory theBookDirectory = new BookDirectory();
 
+        String theResultStringOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(", \n ", "<<", ">>"));
 
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
-
+        System.out.println(theResultStringOfBooks);
     }
 
 
